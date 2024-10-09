@@ -1,0 +1,60 @@
+<!-- <section style="display: flex; justify-content: center">
+  <div style="width: 80%">
+    <table mat-table [dataSource]="dataSource">
+      @for (column of displayedColumns(); track $index){
+      <ng-container [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element[column] }}
+          @if(column === 'action'){
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="openEditForm(element)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteUser(element.ID)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          }
+        </td>
+      </ng-container>
+      }
+      <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
+    </table>
+  </div>
+</section> -->
+
+<section style="display: flex; justify-content: center;">
+  <div style="width: 80%;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th *ngFor="let column of displayedColumns()" style="border: 1px solid #ddd; padding: 8px;">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of data()">
+          <td *ngFor="let column of displayedColumns()" style="border: 1px solid #ddd; padding: 8px;">
+            {{ element.ID }}
+            <ng-container *ngIf="column === 'action'">
+              <button
+                style="background: transparent; border: none; color: blue; cursor: pointer;"
+                (click)="openEditForm(element)"
+              >
+                Edit
+              </button>
+              <button
+                style="background: transparent; border: none; color: red; cursor: pointer;"
+                (click)="deleteUser(element.ID)"
+              >
+                Delete
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
